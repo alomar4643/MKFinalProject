@@ -59,11 +59,6 @@ namespace MortalKombatDB.Controllers
             {
                 return BadRequest();
             }
-
-            move.Characters.ForEach(a => {
-                _context.Entry(a);
-            });
-
             _context.Entry(move).State = EntityState.Modified;
 
             try

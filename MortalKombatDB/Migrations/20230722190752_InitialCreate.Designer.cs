@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MortalKombatDB;
 
@@ -10,9 +11,11 @@ using MortalKombatDB;
 namespace MortalKombatDB.Migrations
 {
     [DbContext(typeof(MortalKombatDBContext))]
-    partial class MortalKombatDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230722190752_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.9");
