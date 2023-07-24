@@ -11,8 +11,8 @@ using MortalKombatDB;
 namespace MortalKombatDB.Migrations
 {
     [DbContext(typeof(MortalKombatDBContext))]
-    [Migration("20230722204503_Moves")]
-    partial class Moves
+    [Migration("20230724034847_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

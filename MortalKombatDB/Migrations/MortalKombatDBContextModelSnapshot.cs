@@ -17,6 +17,21 @@ namespace MortalKombatDB.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.9");
 
+            modelBuilder.Entity("CharacterMove", b =>
+                {
+                    b.Property<Guid>("MovesId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("charactersId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("MovesId", "charactersId");
+
+                    b.HasIndex("charactersId");
+
+                    b.ToTable("CharacterMove");
+                });
+
             modelBuilder.Entity("MortalKombatDB.Models.Character", b =>
                 {
                     b.Property<Guid>("Id")
@@ -38,9 +53,6 @@ namespace MortalKombatDB.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("CharacterId")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -54,21 +66,22 @@ namespace MortalKombatDB.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CharacterId");
-
                     b.ToTable("Moves");
                 });
 
-            modelBuilder.Entity("MortalKombatDB.Models.Move", b =>
+            modelBuilder.Entity("CharacterMove", b =>
                 {
-                    b.HasOne("MortalKombatDB.Models.Character", null)
-                        .WithMany("Moves")
-                        .HasForeignKey("CharacterId");
-                });
+                    b.HasOne("MortalKombatDB.Models.Move", null)
+                        .WithMany()
+                        .HasForeignKey("MovesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-            modelBuilder.Entity("MortalKombatDB.Models.Character", b =>
-                {
-                    b.Navigation("Moves");
+                    b.HasOne("MortalKombatDB.Models.Character", null)
+                        .WithMany()
+                        .HasForeignKey("charactersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
