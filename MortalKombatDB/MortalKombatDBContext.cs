@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MortalKombatDB.Models;
-using System.Reflection.Metadata;
 
 namespace MortalKombatDB
 {

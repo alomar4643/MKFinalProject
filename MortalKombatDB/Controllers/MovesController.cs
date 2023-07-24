@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MortalKombatDB;
 using MortalKombatDB.Models;
 
 namespace MortalKombatDB.Controllers
 {
-    [Route("api/[controller]")]
+	[Route("api/[controller]")]
     [ApiController]
     public class MovesController : ControllerBase
     {
@@ -59,6 +53,12 @@ namespace MortalKombatDB.Controllers
             {
                 return BadRequest();
             }
+
+			//move.Characters.ForEach(a =>
+   //         {
+   //             _context.attach(a);
+   //         });
+
             _context.Entry(move).State = EntityState.Modified;
 
             try

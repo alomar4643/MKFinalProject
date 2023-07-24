@@ -1,4 +1,6 @@
-﻿namespace MortalKombatDB.Models
+﻿using System.Text.Json.Serialization;
+
+namespace MortalKombatDB.Models
 {
 	public class Move
 	{
@@ -10,6 +12,7 @@
 		public string Description { get; set; }
 
 		public bool IsFatality { get; set; }
-
+		//[JsonIgnore]
+		//public List<Character>? characters { get; set; }
 	}
 }

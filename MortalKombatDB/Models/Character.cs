@@ -7,8 +7,8 @@ namespace MortalKombatDB.Models
 		public Guid Id { get; set; }
 
 		public string Name { get; set; }
-		[JsonIgnore]
-		public List<Move>? Moves { get; set; }
+		//[JsonIgnore]
+		//public List<Move>? Moves { get; set; }
 
 	}
 }
