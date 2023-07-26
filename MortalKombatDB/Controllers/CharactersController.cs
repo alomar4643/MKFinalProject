@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MortalKombatDB.Data;
 using MortalKombatDB.Models;
 
 namespace MortalKombatDB.Controllers
 {
+	[ApiController]
 	[Route("api/[controller]")]
-    [ApiController]
     public class CharactersController : ControllerBase
     {
         private readonly MortalKombatDBContext _context;
@@ -17,7 +18,7 @@ namespace MortalKombatDB.Controllers
 
         // GET: api/Characters
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Character>>> GetCharacters()
+		public async Task<ActionResult<IEnumerable<Character>>> GetCharacters()
         {
           if (_context.Characters == null)
           {
@@ -28,7 +29,7 @@ namespace MortalKombatDB.Controllers
 
         // GET: api/Characters/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Character>> GetCharacter(Guid id)
+		public async Task<ActionResult<Character>> GetCharacter(Guid id)
         {
           if (_context.Characters == null)
           {
@@ -45,7 +46,7 @@ namespace MortalKombatDB.Controllers
         }
 
         // PUT: api/Characters/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+ 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCharacter(Guid id, Character character)
         {
@@ -53,11 +54,6 @@ namespace MortalKombatDB.Controllers
             {
                 return BadRequest();
             }
-
-            //character.Moves.ForEach(a =>
-            //{
-            //    _context.Attach(a);
-            //});
 
             _context.Entry(character).State = EntityState.Modified;
 
@@ -81,7 +77,7 @@ namespace MortalKombatDB.Controllers
         }
 
         // POST: api/Characters
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+
         [HttpPost]
         public async Task<ActionResult<Character>> PostCharacter(Character character)
         {
@@ -103,6 +99,7 @@ namespace MortalKombatDB.Controllers
             {
                 return NotFound();
             }
+
             var character = await _context.Characters.FindAsync(id);
             if (character == null)
             {

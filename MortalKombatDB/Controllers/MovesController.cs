@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MortalKombatDB.Data;
 using MortalKombatDB.Models;
 
 namespace MortalKombatDB.Controllers
 {
+	[ApiController]
 	[Route("api/[controller]")]
-    [ApiController]
     public class MovesController : ControllerBase
     {
         private readonly MortalKombatDBContext _context;
@@ -45,7 +46,6 @@ namespace MortalKombatDB.Controllers
         }
 
         // PUT: api/Moves/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMove(Guid id, Move move)
         {
@@ -53,11 +53,6 @@ namespace MortalKombatDB.Controllers
             {
                 return BadRequest();
             }
-
-			//move.Characters.ForEach(a =>
-   //         {
-   //             _context.attach(a);
-   //         });
 
             _context.Entry(move).State = EntityState.Modified;
 
@@ -81,7 +76,6 @@ namespace MortalKombatDB.Controllers
         }
 
         // POST: api/Moves
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Move>> PostMove(Move move)
         {
@@ -97,12 +91,13 @@ namespace MortalKombatDB.Controllers
 
         // DELETE: api/Moves/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMove(Guid id)
+		public async Task<IActionResult> DeleteMove(Guid id)
         {
             if (_context.Moves == null)
             {
                 return NotFound();
             }
+
             var move = await _context.Moves.FindAsync(id);
             if (move == null)
             {

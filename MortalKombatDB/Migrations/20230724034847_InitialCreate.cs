@@ -1,12 +1,12 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace MortalKombatDB.Migrations
 {
-    /// <inheritdoc />
-    public partial class InitialCreate : Migration
+	/// <inheritdoc />
+	//Use of Open/Close Solid Principle. Creates a new class with features, and will inherite the base class.
+	public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
