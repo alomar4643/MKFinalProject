@@ -1,4 +1,7 @@
 # MKFinalProject
+
+User will need to run "dontnet ef database update" prior to adding information to the databases.
+
 CHARACTERS DATABASE
 
 [
