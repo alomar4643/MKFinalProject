@@ -18,7 +18,8 @@ namespace MortalKombatDB.Controllers
 
         // GET: api/Moves
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Move>>> GetMoves()
+		//Use of Liskov Substitution Principle. Moves controller inherets from move class.
+		public async Task<ActionResult<IEnumerable<Move>>> GetMoves()
         {
           if (_context.Moves == null)
           {
@@ -47,7 +48,8 @@ namespace MortalKombatDB.Controllers
 
         // PUT: api/Moves/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMove(Guid id, Move move)
+		//Use of Liskov Substitution Principle. Moves controller inherets from move class.
+		public async Task<IActionResult> PutMove(Guid id, Move move)
         {
             if (id != move.Id)
             {
@@ -91,6 +93,7 @@ namespace MortalKombatDB.Controllers
 
         // DELETE: api/Moves/5
         [HttpDelete("{id}")]
+		//Use of Liskov Substitution Principle. Moves controller inherets from move class.
 		public async Task<IActionResult> DeleteMove(Guid id)
         {
             if (_context.Moves == null)

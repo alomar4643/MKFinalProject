@@ -18,6 +18,7 @@ namespace MortalKombatDB.Controllers
 
         // GET: api/Characters
         [HttpGet]
+		//Use of Liskov Substitution Principle. Character controller inherets from character class.
 		public async Task<ActionResult<IEnumerable<Character>>> GetCharacters()
         {
           if (_context.Characters == null)
@@ -48,7 +49,8 @@ namespace MortalKombatDB.Controllers
         // PUT: api/Characters/5
  
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCharacter(Guid id, Character character)
+		//Use of Liskov Substitution Principle. Character controller inherets from character class.
+		public async Task<IActionResult> PutCharacter(Guid id, Character character)
         {
             if (id != character.Id)
             {
@@ -93,7 +95,8 @@ namespace MortalKombatDB.Controllers
 
         // DELETE: api/Characters/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCharacter(Guid id)
+		//Use of Liskov Substitution Principle. Character controller inherets from character class.
+		public async Task<IActionResult> DeleteCharacter(Guid id)
         {
             if (_context.Characters == null)
             {

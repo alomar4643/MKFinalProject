@@ -1,5 +1,5 @@
-using MortalKombatDB.Data;
 using Microsoft.EntityFrameworkCore;
+using MortalKombatDB.Data;
 
 namespace MortalKombatDB
 {
@@ -14,7 +14,7 @@ namespace MortalKombatDB
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
 
-			var connectionstring = builder.Configuration.GetConnectionString("DefaultConnection");
+			//var connectionstring = builder.Configuration.GetConnectionString("DefaultConnection");
 			builder.Services.AddDbContext<MortalKombatDBContext>();
 
 			var app = builder.Build();
@@ -31,6 +31,23 @@ namespace MortalKombatDB
 			app.UseAuthorization();
 
 			app.MapControllers();
+
+
+			// Query DataBase using RawSQL
+
+			app.MapGet("SQLQuery", (MortalKombatDBContext _ctx) =>
+			{
+				String query = "SELECT Name,Description, IsFatality FROM Moves";
+
+				List<SQLQuery> queries = _ctx.SQLQueries
+										 .FromSqlRaw(query)
+										 .ToList();
+
+
+
+				return Results.Ok(queries);
+			});
+			//Ask if this needs to be asynchinous and if so, how 
 
 			app.Run();
 		}

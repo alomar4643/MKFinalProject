@@ -10,6 +10,8 @@ namespace MortalKombatDB.Data
         public DbSet<Character> Characters { get; set; }
         public DbSet<Move> Moves { get; set; }
 
+        public DbSet<SQLQuery> SQLQueries { get; set; } = default!;
+
         public string DbPath { get; }
 
         public MortalKombatDBContext()
@@ -19,9 +21,15 @@ namespace MortalKombatDB.Data
             DbPath = Path.Join(path, "mortalkombat.db");
         }
 
-        // The following configures EF to create a Sqlite database file in the
-        // special "local" folder for your platform.
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			base.OnModelCreating(modelBuilder);
+			modelBuilder.Entity<SQLQuery>(b => b.ToView("MKSQL"));
+		}
+		// The following configures EF to create a Sqlite database file in the
+		// special "local" folder for your platform.
+		protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite($"Data Source={DbPath}");
-    }
+
+	}
 }
