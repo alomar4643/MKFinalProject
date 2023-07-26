@@ -33,21 +33,14 @@ namespace MortalKombatDB
 			app.MapControllers();
 
 
-			// Query DataBase using RawSQL
-
-			app.MapGet("SQLQuery", (MortalKombatDBContext _ctx) =>
+			app.MapGet("SQLQuery", async (MortalKombatDBContext _ctx) =>
 			{
 				String query = "SELECT Name,Description, IsFatality FROM Moves";
-
-				List<SQLQuery> queries = _ctx.SQLQueries
-										 .FromSqlRaw(query)
-										 .ToList();
-
-
-
-				return Results.Ok(queries);
+				return Results.Ok(_ctx.SQLQueries
+											   .FromSqlRaw(query)
+											   .ToListAsync());
 			});
-			//Ask if this needs to be asynchinous and if so, how 
+
 
 			app.Run();
 		}
