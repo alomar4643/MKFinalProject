@@ -1,14 +1,14 @@
-##Welcome to Mortal Kombat Db!
+## Welcome to Mortal Kombat Db!
 
 Introducing a dynamic CRUD Web API designed for storing data about fighting game characters found in _Mortal Kombat_. With this CRUD API, users gain the ability to effortlessly add new characters, modify and update existing ones, and even delete them entirely from the database. I encourage you to try adding your own characters and moves to the collection!
 
-###Features
+### Features
 1. Application is a CRUD Web API.
 2. Application is asynchronous.
 3. Program queries the databse using Raw SQL.
 4. Optional: SOLID principles comments where made througout the application. 
 
-###Instructions
+### Instructions
 In order to successfully run this CRUD Web API the user will need to:
 
 1. Initialize the databse, please run `donet ef database update` in the Developer PowerShell Terminal.
@@ -17,7 +17,7 @@ In order to successfully run this CRUD Web API the user will need to:
 --
 3. Running the program will start an instance of Swagger in your web browser. There you can access the use of GET, POST, PUT, and DELETE sections. The program will **_not_** create a unique GUID when adding a new character. Feel free to use a [Free Online Guid Generator](https://guidgenerator.com/online-guid-generator.aspx/) when adding your own characters and moves.
 
-###Table 1
+### Table 1
 **Characters**
 
     "id": "750c1676-49b2-4436-8575-77ab914213d3",
@@ -30,6 +30,7 @@ In order to successfully run this CRUD Web API the user will need to:
     "name": "Liu Kang"
 
 **Moves**
+
 _Scorpion_
 
     "id": "6b4b8153-215f-4a28-993c-b701c2889f6f",
@@ -68,7 +69,7 @@ _Liu Kang_
     "description": "F,D,B,Up,F",
     "isFatality": true
   
-####Move Abbreviations
+#### Move Abbreviations
 | Abbreviation  | Definition    |
 | ------------- |:-------------:|
 | B      | Back |
